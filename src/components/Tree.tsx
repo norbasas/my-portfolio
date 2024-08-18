@@ -14,7 +14,7 @@ const TreeComponent: React.FC = () => {
 
   const fetchTree = async () => {
     const response = await axios.get('/api/tree');
-    console.log(response.data);
+    console.log(response.data, 'response.data-----------');
     setTree(response.data);
   };
 

@@ -67,15 +67,17 @@ body {
       border-width: 1px;
       border-radius: 24px;
       padding: 12px;
+      background-color: #ffb300;
       h2{
         font-size: 26px;
         font-weight: 700;
         margin-bottom: 8px;
+        color: #121212;
       }
       p{
         font-size: 14px;
         max-height: 150px;
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(0, 0, 0, 0.6);
         overflow: hidden;
         display: block;
         max-height: 7rem;
@@ -117,12 +119,13 @@ body {
         padding: 12px;
       }
       &-one {
-        border-color: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
         border-width: 1px;
         border-radius: 24px;
         align-items: flex-end;
         justify-content: flex-start;
         overflow-y: auto;
+        background-color: #ffffff14;
         .experience{
           max-height: 100%;
           overflow-y: auto;
@@ -183,6 +186,7 @@ body {
       border-width: 1px;
       border-radius: 24px;
       overflow: hidden;
+      background-color: #00ff50;
       .world-container{
         display: flex;
         width: 100%;
@@ -225,6 +229,8 @@ body {
       border-width: 1px;
       border-radius: 24px;
       padding: 12px;
+      background-color: #00ffaf;
+      color: #121212;
     }
     &-two {
       align-items: center;
@@ -244,16 +250,58 @@ body {
         display: flex;
         height: 100%;
         width: 50%;
-        padding: 12px;
+        border-color: rgba(255, 255, 255, 0.1);
+        border-width: 1px;
         border-radius: 24px;
       }
       &-one{
         align-items: flex-end;
         justify-content: flex-start;
-        border-color: rgba(255, 255, 255, 0.1);
-        border-width: 1px;
+        
+        h2{
+          position: absolute;
+          bottom: 8px;
+          left: 8px;
+          z-index: 1;
+        }
+        .hover-images-container{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          mask-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0));
+          overflow: hidden;
+          border-radius: 24px;
+          img{
+            border-radius: 24px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+            aspect-ratio: 1/1;
+            animation: zoom-in-out 10s ease-in-out infinite;
+            animation-play-state: paused;
+            @keyframes zoom-in-out {
+              0% {
+                transform: scale(1);
+              }
+              50% {
+                transform: scale(1.2);
+              }
+              100% {
+                transform: scale(1);
+              }
+            }
+
+            &:hover {
+              animation-play-state: running;
+            }
+          }
+        }
       }
       &-two{
+        padding: 12px;
         align-items: flex-start;
         justify-content: flex-end;
         flex-direction: column;
@@ -270,6 +318,7 @@ body {
       border-width: 1px;
       border-radius: 24px;
       padding: 12px;
+      background-color: #8700ff;
     }
   }
 }

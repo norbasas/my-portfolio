@@ -5,8 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 generator client {
@@ -14,7 +15,7 @@ generator client {
 }
 
 model Tree {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  id    String @id @default(uuid()) @map("id") @db.Uuid
   water Int
   views Int
 }

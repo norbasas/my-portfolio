@@ -37,7 +37,7 @@ export default function SpotifyPlayer({ className }: { className: string }) {
       {song ? (
           <SpotifyAudioPlayer className={className} isPlaying={song.isPlaying} preview_url={song.preview_url || ''} albumArt={song.albumArt} name={song.name} artist={song.artist} />
       ) : (
-        <div className={className}>
+        <div className={"bottom-two-two"}>
           <h2>No song is currently playing.</h2>
         </div>
       )}

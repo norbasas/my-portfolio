@@ -1,16 +1,3 @@
-# Norberto Basas Jr
-**Front-End Web Developer**
-
-## About Me
-Frontend developer and designer with a passion for creating responsive and visually stunning web applications using React, SCSS, and Tailwind. When I’m not coding, you can find me immersed in manga and webtoons, watching streams, or playing Dota and mobile games. Always eager to learn, I stay updated on the latest tech trends.
-
-## Skills
-- Javascript
-- TypeScript
-- ReactJs
-- NextJs
-- SCSS
-
 ## Experience
 
 ### Front-End Web Developer
@@ -39,15 +26,3 @@ Frontend developer and designer with a passion for creating responsive and visua
 - Created layouts, graphics, and visual designs for digital advertisements and print media
 - Monitored and reported on marketing expenses and performance metrics
 - Provided customer service support and performed basic network administration tasks as needed
-
-## Education
-- Pangasinan State University
-- BS Information Technology
-- 2014-2018
-
-## Contact
-You can reach me at [norbzqwerty@gmail.com](mailto:norbzqwerty@gmail.com) or connect with me on [[Your LinkedIn Profile](https://www.linkedin.com/in/norbasas/)].
-
-Thank you for taking the time to read my introduction!
-
-
