@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "postinstall": "prisma generate",
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "@react-three/drei": "^9.109.5",
