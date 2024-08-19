@@ -109,8 +109,8 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
         Your browser does not support the audio element.
       </audio>
      
-      <img className="song-cover w-32 mt-auto" ref={imgRef} src={albumArt} alt={name} />
-      <div className="song-info flex align-middle gap-1">
+      <img className="song-cover mt-auto" ref={imgRef} src={albumArt} alt={name} />
+      <div className="song-info flex align-middle gap-1 w-full">
         <button onClick={handlePlayPause}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
             />
           </svg>
         </button>
-        <div>
+        <div className="song-meta">
           <h3>{name}</h3>
           <p>{artist}</p>
         </div>

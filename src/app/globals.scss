@@ -187,6 +187,7 @@ body {
       border-radius: 24px;
       overflow: hidden;
       background-color: #00ff50;
+      position: relative;
       .world-container{
         display: flex;
         width: 100%;
@@ -205,7 +206,7 @@ body {
       gap: 8px;
       justify-content: center;
       width: 100%;
-      height: 35%;
+      height: calc(35% - 8px);
       h2{
         font-size: 26px;
         font-weight: 700;
@@ -306,6 +307,24 @@ body {
         justify-content: flex-end;
         flex-direction: column;
         gap: 8px;
+        overflow: hidden;
+        .song-cover{
+          max-width: 128px;
+          max-height: 128px;
+        }
+        .song-info{
+          .song-meta{
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 40px);
+          }
+          h3{
+            width: calc(100% - 8px);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
       }
     }
     &-three {
@@ -350,4 +369,177 @@ body {
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
   }
+}
+
+.webgl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: none;
+  background-color: #000000;
+  cursor: move;
+  width: 100%;
+  height: 100%;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+#loading-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  visibility: visible;
+}
+#loading-wrapper.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loading-bar {
+  width: 80%;
+  max-width: 400px;
+  background: #333;
+  border-radius: 6px;
+  overflow: hidden;
+  
+}
+#loading-progress {
+  height: 18px;
+  background: #4caf50;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+#loading-text{
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+}
+
+.forest-info{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  background-color: #3333334a;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 10px;
+}
+
+.rain{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  .clouds {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    .cloud{
+        transform: translateY(-20px);
+        opacity: 0;
+        animation-fill-mode: forwards;
+      @keyframes cloudMove {
+        0% {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+     
+    }
+  }
+
+
+.rain__drop {
+  -webkit-animation-delay: calc(var(--d) * 1s);
+          animation-delay: calc(var(--d) * 1s);
+  -webkit-animation-duration: calc(var(--a) * 1s);
+          animation-duration: calc(var(--a) * 1s);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: drop;
+          animation-name: drop;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  animation-play-state: paused;
+  height: 30px;
+  left: calc(var(--x) * 1%);
+  position: absolute;
+  top: calc((var(--y) + 50) * -1px);
+}
+.rain__drop path {
+  fill: #a1c6cc;
+  opacity: var(--o);
+  transform: scaleY(calc(var(--s) * 1.5));
+}
+&.show{
+  visibility: visible;
+  opacity: 1;
+  .rain__drop {
+    animation-play-state: running;
+  }
+  .cloud{
+
+    &.cloud-1{
+      animation: cloudMove 0.8s ease-in-out 0.3s forwards;
+      z-index: 0;
+    }
+    &.cloud-2{
+      animation: cloudMove 0.5s ease-in-out 0.6s forwards;
+      z-index: 0;
+    }
+    &.cloud-3{
+      z-index: 2;
+      animation: cloudMove 0.2s ease-in-out 0s forwards;
+    }
+  }
+}
+@-webkit-keyframes drop {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+@keyframes drop {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
 }

@@ -1,16 +1,20 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ForestLake from './ForestLake';
+import Rain from './Rain';
 
 interface Tree {
   xp: number;
   views: number;
   water: number;
-  level: number; // Add viewCount property
+  level: number;
+  xpRequired?: number;
 }
 
 const TreeComponent: React.FC = () => {
-  const [tree, setTree] = useState<Tree>({ xp: 0, views: 0, water: 0, level: 0 }); // Add viewCount property
+  const [tree, setTree] = useState<Tree>({ xp: 0, views: 0, water: 0, level: 0, xpRequired: 0 }); // Add viewCount property
+  const [rain, setRain] = useState(false);
 
   const fetchTree = async () => {
     const response = await axios.get('/api/tree');
@@ -40,18 +44,23 @@ const TreeComponent: React.FC = () => {
       water: prevTree.water + 1 // Increment waterCount
     }));
     fetchTree();
+    setRain(true);
+    setTimeout(() => {
+      setRain(false);
+    }, 3000);
   };
 
 
   return (
     <>
-      <div>
-        <p>XP: {tree.xp}</p>
-        <p>Views: {tree.views}</p>
-        <p>Water Count: {tree.water}</p>
-        <p>Level: {tree.level}</p>
+        <Rain show={rain} />
+        <div className='forest-info'>
+        <p>XP: {tree.xp} / {tree.xpRequired} </p>
+        <p>Water Received: {tree.water}</p>
+        <p>Island Level: {tree.level}</p>
         <button onClick={waterTree}>Water the Tree</button>
-      </div>
+        </div>
+        <ForestLake level={tree.level}/>
     </>
   );
 };

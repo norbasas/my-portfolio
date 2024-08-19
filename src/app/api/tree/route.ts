@@ -10,9 +10,10 @@ const calculateXP = (views: number, water: number): number => {
 };
 
 // Function to calculate level based on XP
-const calculateLevel = (xp: number): number => {
+const calculateLevel = (views: number, water: number) => {
+  let xp = views * 10 + water * 5;
   let level = 0;
-  let xpRequired = 1000;
+  let xpRequired = 100;
 
   while (xp >= xpRequired) {
     level++;
@@ -20,7 +21,7 @@ const calculateLevel = (xp: number): number => {
     xpRequired *= 2;
   }
 
-  return level;
+  return { level, xpRequired, xp };
 };
 
 export async function GET() {
@@ -34,8 +35,7 @@ export async function GET() {
     });
   }
 
-  const xp = calculateXP(tree.views, tree.water); // Calculate XP
-  const level = calculateLevel(xp); // Calculate level
+  const {level, xpRequired, xp} = calculateLevel(tree.views, tree.water); // Calculate level
 
-  return NextResponse.json({ ...tree, xp, level });
+  return NextResponse.json({ ...tree, xp, level, xpRequired });
 }
