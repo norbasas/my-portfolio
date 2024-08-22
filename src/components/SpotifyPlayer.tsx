@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from 'react';
-import SpotifyAudioPlayer from './SpotifyAudioPlayer';
+import { useEffect, useState } from "react";
+import SpotifyAudioPlayer from "./SpotifyAudioPlayer";
 
 interface SpotifySong {
   preview_url: string;
@@ -13,19 +13,22 @@ interface SpotifySong {
 
 export default function SpotifyPlayer({ className }: { className: string }) {
   const [song, setSong] = useState<SpotifySong | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchSong() {
       try {
-        const response = await fetch('/api/my-music');
+        const response = await fetch("/api/my-music");
         if (response.ok) {
           const data = await response.json();
           setSong(data);
         } else {
-          console.error('Failed to fetch song data');
+          setError(true);
+          console.error("Failed to fetch song data");
         }
       } catch (error) {
-        console.error('Error fetching song:', error);
+        setError(true);
+        console.error("Error fetching song:", error);
       }
     }
 
@@ -35,13 +38,23 @@ export default function SpotifyPlayer({ className }: { className: string }) {
   return (
     <>
       {song ? (
-          <SpotifyAudioPlayer className={className} isPlaying={song.isPlaying} preview_url={song.preview_url || ''} albumArt={song.albumArt} name={song.name} artist={song.artist} />
-      ) : (
+        <SpotifyAudioPlayer
+          className={className}
+          isPlaying={song.isPlaying}
+          preview_url={song.preview_url || ""}
+          albumArt={song.albumArt}
+          name={song.name}
+          artist={song.artist}
+        />
+      ) : error ? (
         <div className={"bottom-two-two"}>
           <h2>No song is currently playing.</h2>
+        </div>
+      ) : (
+        <div className={"bottom-two-two"}>
+          <h2>Connecting to spotify...</h2>
         </div>
       )}
     </>
   );
 }
-

@@ -95,11 +95,15 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
 
   return (
     <div
-      className={className ? `${className} spotify-audio-player` : "spotify-audio-player"}
-      style={{
-        backgroundColor: bgColor,
-        "--spotify-bg": bgColor,
-      } as React.CSSProperties}
+      className={
+        className ? `${className} spotify-audio-player` : "spotify-audio-player"
+      }
+      style={
+        {
+          backgroundColor: bgColor,
+          "--spotify-bg": bgColor,
+        } as React.CSSProperties
+      }
     >
       <h2>
         {isPlaying ? "What Im currently listening..." : "Last played song"}
@@ -108,32 +112,44 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
         <source src={preview_url} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-     
-      <img className="song-cover mt-auto" ref={imgRef} src={albumArt} alt={name} />
+
+      <img
+        className="song-cover mt-auto"
+        ref={imgRef}
+        src={albumArt}
+        alt={name}
+      />
       <div className="song-info flex align-middle gap-1 w-full">
         <button onClick={handlePlayPause}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="#fff"
-            width={40}
-            height={40}
-            className="spotify-play-icon"
-            style={{ pointerEvents: "none" }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-            />
-          </svg>
+          {isAudioPlaying ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6"
+            >
+              <path
+                fillRule="evenodd"
+                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM9 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h.75a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H9Zm5.25 0a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75H15a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-.75Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width={35}
+              height={35}
+              fill="currentColor"
+              className="size-6"
+            >
+              <path
+                fillRule="evenodd"
+                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          )}
         </button>
         <div className="song-meta">
           <h3>{name}</h3>

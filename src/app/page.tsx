@@ -1,6 +1,7 @@
 import HoverImage from "@/components/HoverImages";
 import RandomAbout from "@/components/RandomAbout";
 import RandomNameChanger from "@/components/RandomNameChanger";
+import Slider from "@/components/slider";
 import SpotifyPlayer from "@/components/SpotifyPlayer";
 import TreeComponent from "@/components/Tree";
 
@@ -21,13 +22,23 @@ const images = createImageArray(11);
 const HomePage = async () => {
 
   const { contentHtml } = await getMarkdownContent('content/experience.md');
-
+  const slides = [
+    {
+      title: 'Christian Bautista Website',
+      description: '',
+      image: '/images/work-1.png',
+    }
+  ];
+  
   return (
     <div className="main-container">
       <div className="top-level">
         <div className="top-one">
+          <video src="/videos/train.mp4" autoPlay muted loop className="about-video"/>
+          <div className="about-container">
           <h2>About Me</h2>
           <RandomAbout/>
+          </div>
         </div>
         <div className="top-two">
           <div className="top-two-one">
@@ -48,12 +59,15 @@ const HomePage = async () => {
       </div>
       <div className="bottom-level">
         <div className="bottom-one">
+          <div className="education-wrapper">
           <h2>Education</h2>
           <ul>
             <li>Pangasinan State University</li>
             <li>BS Information Technology</li>
             <li>2014-2018</li>
           </ul>
+          </div>
+          <img src="/images/education.jpg" alt="Under Grad Days" />
         </div>
         <div className="bottom-two">
           <div className="bottom-two-one">
@@ -62,7 +76,10 @@ const HomePage = async () => {
           </div>
           <SpotifyPlayer className="bottom-two-two"/>
         </div>
-        <div className="bottom-three"><h2>Works</h2></div>
+        <div className="bottom-three">
+        <Slider slides={slides} />
+          <h2>Works</h2>
+        </div>
       </div>
     </div>
   );
