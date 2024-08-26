@@ -52,7 +52,7 @@ const TreeComponent: React.FC = () => {
 
 
   return (
-    <>
+    <div className='world-container'>
         <Rain show={rain} />
         <div className='forest-info'>
         <p>XP: {tree.xp} / {tree.xpRequired} </p>
@@ -61,7 +61,7 @@ const TreeComponent: React.FC = () => {
         <button onClick={waterTree}>Water the Tree</button>
         </div>
         <ForestLake level={tree.level}/>
-    </>
+    </div>
   );
 };
 

@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
-import { cookies } from 'next/headers';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export async function GET() {
-  const refreshToken = cookies().get('spotify_refresh_token')?.value;
+  const spotifyToken = await prisma.token.findFirst();
 
-  if (!refreshToken) {
+
+  if (spotifyToken?.expiresAt < new Date())  {
     return NextResponse.json({ error: 'No refresh token found' }, { status: 400 });
   }
 
@@ -15,7 +18,7 @@ export async function GET() {
   try {
     const response = await axios.post('https://accounts.spotify.com/api/token', new URLSearchParams({
       grant_type: 'refresh_token',
-      refresh_token: refreshToken,
+      refresh_token: spotifyToken.refreshToken,
     }), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -23,9 +26,28 @@ export async function GET() {
       },
     });
 
-    const { access_token } = response.data;
+    const token = response.data;
 
-    return NextResponse.json({ access_token });
+    if (spotifyToken && token) {
+      await prisma.token.update({
+        where: { id: spotifyToken.id },
+        data: {
+          accessToken: token.access_token,
+          refreshToken: token.refresh_token,
+          expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        },
+      });
+    } else {
+      await prisma.token.create({
+        data: {
+          accessToken: token.access_token,
+          refreshToken: token.refresh_token,
+          expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        },
+      });
+    }
+
+    return NextResponse.json({ access_token: token.access_token });
   } catch (error) {
     console.error('Error refreshing Spotify token:', error);
     return NextResponse.error();

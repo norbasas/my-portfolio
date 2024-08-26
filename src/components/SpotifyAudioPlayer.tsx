@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 interface SpotifyAudioPlayerProps {
@@ -8,6 +9,8 @@ interface SpotifyAudioPlayerProps {
   artist: string;
   isPlaying: any;
   className?: string;
+  link: string;
+  artistLink: string;
 }
 
 const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
@@ -17,6 +20,8 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
   artist,
   isPlaying,
   className = "",
+  link,
+  artistLink,
 }) => {
   const [bgColor, setBgColor] = useState<string>("transparent");
   const imgRef = useRef<HTMLImageElement>(null);
@@ -105,9 +110,24 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
         } as React.CSSProperties
       }
     >
-      <h2>
+      <h3>
         {isPlaying ? "What Im currently listening..." : "Last played song"}
-      </h2>
+      
+      <span className="powered-by">
+        Powered by{" "}
+        <a
+          href="https://www.spotify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
+            alt="Spotify"
+            style={{ height: "14px", verticalAlign: "middle" }}
+          />
+        </a>
+      </span>
+      </h3>
       <audio ref={audioRef}>
         <source src={preview_url} type="audio/mpeg" />
         Your browser does not support the audio element.
@@ -152,8 +172,12 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
           )}
         </button>
         <div className="song-meta">
-          <h3>{name}</h3>
-          <p>{artist}</p>
+          <Link href={link}>
+            <h3>{name}</h3>
+          </Link>
+          <Link href={artistLink}>
+            <p>{artist}</p>
+          </Link>
         </div>
       </div>
 

@@ -47,6 +47,30 @@ body {
     max-height: max-content;
     height: max-content;
   }
+  .card-title-section{
+    position: absolute;
+    left: 18px;
+    bottom: 20px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 5px;
+    pointer-events: none;
+    span{
+      font-size: 12px;
+      transition: opacity 0.3s;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+  }
+  .section-icons{
+    opacity: 0.7;
+    pointer-events: none;
+    padding: 8px;
+    background-color: #ffffff11;
+    border-radius: 6px;
+  }
   .top {
     &-level {
       flex: 1 0 0px;
@@ -73,11 +97,15 @@ body {
       justify-content: flex-end;
       width: 20%;
       height: 100%;
-      border-color: rgb(61 61 61);
+      border-color: rgb(61 61 61 / 50%);
       border-width: 1px;
       border-radius: 24px;
       position: relative;
       overflow: hidden;
+      background-color: #000000;
+      .card-title-section{
+        opacity: 1;
+      }
       .about-video{
         width: 100%;
         height: 100%;
@@ -95,21 +123,19 @@ body {
           z-index: 1;
           transition: all 0.3s;
           border-radius: 12px;
+          opacity: 0;
         h2 {
-          font-size: 22px;
+          font-size: 18px;
           font-weight: 700;
           margin-bottom: 8px;
           color: #ffffff;
         }
         p {
           font-size: 14px;
-          max-height: 150px;
           color: rgba(255, 255, 255, 0.6);
           font-weight: 500;
           display: block;
           transition: all 0.3s ease-in-out;
-          max-height: 0;
-          opacity: 0;
         }
       }
       &::before{
@@ -136,17 +162,20 @@ body {
         background-repeat: repeat;
         animation: noise 1.5s steps(2) 0.01s infinite;
         animation-play-state: running;
-        opacity: 0.03;
+        opacity: 0.02;
         z-index: 1;
       }
       &:hover {
+        .card-title-section{
+          opacity: 0;
+        }
         &::before{
           opacity: 1;
         }
         .about-video{
           filter: blur(0);
         }
-        p {
+        .about-container {
           opacity: 1;
           max-height: 100%;
         }
@@ -188,14 +217,15 @@ body {
         padding: 12px;
       }
       &-one {
-        border-color: rgba(255, 255, 255, 0.3);
+        border-color: rgb(61 61 61 / 50%);
         border-width: 1px;
         border-radius: 24px;
         align-items: flex-end;
         justify-content: flex-start;
         overflow-y: auto;
-        background-color: #ffffff14;
+        background-color: #000000;
         overflow: hidden;
+        position: relative;
         .experience {
           max-height: 100%;
           overflow-y: auto;
@@ -208,7 +238,7 @@ body {
             scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
           }
           h2 {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
           }
@@ -254,6 +284,9 @@ body {
           filter: blur(32px);
         }
         &:hover {
+          .card-title-section{
+            opacity: 0;
+          }
           .experience{
             filter: blur(0px);
           }
@@ -267,7 +300,7 @@ body {
         align-items: center;
         flex-direction: column;
         .my-name {
-          font-size: 4.5rem;
+          font-size: 2.5rem;
           font-weight: 700;
           cursor: pointer;
         }
@@ -294,7 +327,7 @@ body {
       justify-content: flex-end;
       width: 40%;
       height: 100%;
-      border-color: rgb(61 61 61);
+      border-color: rgb(61 61 61 / 50%);
       border-width: 1px;
       border-radius: 24px;
       overflow: hidden;
@@ -304,7 +337,32 @@ body {
         display: flex;
         width: 100%;
         height: 100%;
-        position: relative;
+        transition: all 0.3s;
+        filter: blur(32px);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        transition: opacity 0.3s linear;
+        left: -50%;
+        top: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: url(https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png);
+        background-repeat: repeat;
+        animation: noise 1.5s steps(2) 0.01s infinite;
+        animation-play-state: running;
+        opacity: 0.02;
+        z-index: 1;
+        pointer-events: none;
+      }
+      &:hover {
+        .card-title-section{
+          opacity: 0;
+        }
+        .world-container {
+          filter: blur(0);
+        }
       }
       @media screen and (max-width: 1200px) {
         order: 2;
@@ -328,7 +386,7 @@ body {
       width: 100%;
       height: calc(35% - 8px);
       h2 {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 700;
         margin-bottom: 8px;
       }
@@ -349,30 +407,31 @@ body {
       justify-content: flex-end;
       width: 20%;
       height: 100%;
-      border-color: rgb(144, 144, 144);
+      border-color: rgb(61 61 61 / 50%);
       border-width: 1px;
       border-radius: 24px;
       padding: 12px;
       color: #121212;
       position: relative;
       overflow: hidden;
+      background-color: #000000;
       .education-wrapper{
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 8px;
         z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s;
         h2 {
-          font-size: 22px;
+          font-size: 18px;
           font-weight: 700;
-          margin-bottom: 8px;
+          margin-bottom: 0px;
           color: #fff;
         }
         li {
           font-size: 14px;
           color: rgba(255, 255, 255, 0.6);
-          max-height: 0;
-          opacity: 0;
         }
       }
       img {
@@ -400,7 +459,7 @@ body {
         background-repeat: repeat;
         animation: noise 1.5s steps(2) 0.01s infinite;
         animation-play-state: running;
-        opacity: 0.03;
+        opacity: 0.02;
         z-index: 1;
       }
       &::before {
@@ -417,39 +476,40 @@ body {
      
       &:hover {
         background-color: #191a19;
+        .card-title-section{
+          opacity: 0;
+        }
         img {
           filter: blur(0);
+          mask-image: linear-gradient(rgba(0, 0, 0, 0.882), rgba(0, 0, 0, 0.15));
         }
         &::before {
           opacity: 0;
           animation-play-state: paused;
         }
         .education-wrapper{
-          li {
-            opacity: 1;
-            max-height: 100%;
-          }
+          opacity: 1;
         }
       }
       @keyframes color-change {
         0% {
-          background-color: #08D9D6;
+          background-color: #181818;
         }
 
         10% {
-          background-color: #FF2E63;
+          background-color: #434343;
         }
         30% {
-          background-color: #FF2E63;
+          background-color: #434343;
         }
         60% {
-          background-color: #252A34;
+          background-color: #000000;
         }
         95% {
-          background-color: #08D9D6;
+          background-color: #181818;
         }
         100% {
-          background-color: #08D9D6;
+          background-color: #181818;
         }
       }
       @media screen and (max-width: 1200px) {
@@ -483,7 +543,7 @@ body {
         display: flex;
         height: 100%;
         width: 50%;
-        border-color: rgb(61 61 61);
+        border-color: rgb(61 61 61 / 50%);
         border-width: 1px;
         border-radius: 24px;
       }
@@ -492,6 +552,7 @@ body {
         justify-content: flex-start;
         position: relative;
         overflow: hidden;
+        background-color: #000000;
           &::before {
             content: "";
             position: absolute;
@@ -515,17 +576,18 @@ body {
           background-repeat: repeat;
           animation: noise 1.5s steps(2) 0.01s infinite;
           animation-play-state: running;
-          opacity: 0.03;
+          opacity: 0.02;
           z-index: 1;
           pointer-events: none;
         }
-        > div {
+        .hover-images-container {
           transition: filter 0.2s ease-in-out;
           filter: blur(32px);
         }
         &:hover {
-          > div {
+          .hover-images-container {
             filter: blur(0);
+            mask-image: linear-gradient(rgba(0, 0, 0, 0.882), rgba(0, 0, 0, 0.15));
           }
         }
 
@@ -580,27 +642,92 @@ body {
         }
       }
       &-two {
-        padding: 12px;
-        align-items: flex-start;
-        justify-content: flex-end;
-        flex-direction: column;
-        gap: 8px;
+        display: flex;
+        position: relative;
         overflow: hidden;
-        .song-cover {
-          max-width: 128px;
-          max-height: 128px;
+        background-color: #000000;
+        h2{
+          position: absolute;
+          bottom: 12px;
+          left: 12px;
+          z-index: 2;
         }
-        .song-info {
-          .song-meta {
-            display: flex;
-            flex-direction: column;
-            width: calc(100% - 40px);
+        .spotify-audio-player {
+          position: relative;
+          z-index: 0;
+          padding: 12px;
+          align-items: flex-start;
+          justify-content: flex-end;
+          flex-direction: column;
+          gap: 8px;
+          display: flex;
+          width: 100%;
+          .song-cover {
+            max-width: 128px;
+            max-height: 128px;
           }
-          h3 {
-            width: calc(100% - 8px);
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
+          .song-info {
+            .song-meta {
+              display: flex;
+              flex-direction: column;
+              width: calc(100% - 40px);
+            }
+            h3 {
+              width: calc(100% - 8px);
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+          }
+          &::after {
+            content: "";
+            background-color: var(--spotify-bg);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0, #121212 100%),
+              url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=");
+            height: 211px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: -1;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+          }
+          .powered-by {
+            display: flex;
+            font-size: 9px;
+            gap: 5px;
+          }
+        }
+        
+
+        &::after {
+          content: "";
+          position: absolute;
+          transition: opacity 0.3s linear;
+          left: -50%;
+          top: -50%;
+          width: 200%;
+          height: 200%;
+          background-image: url(https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png);
+          background-repeat: repeat;
+          animation: noise 1.5s steps(2) 0.01s infinite;
+          animation-play-state: running;
+          opacity: 0.02;
+          pointer-events: none;
+        }
+        .spotify-audio-player{
+          transition: all 0.3s;
+          filter: blur(32px);
+        }
+        &:hover {
+          
+          .card-title-section{
+            opacity: 0;
+          }
+          .spotify-audio-player{
+            filter: blur(0px);
           }
         }
         @media screen and (max-width: 1200px) {
@@ -632,12 +759,13 @@ body {
       justify-content: flex-start;
       width: 40%;
       height: 100%;
-      border-color: rgb(61 61 61);
+      border-color: rgb(61 61 61 / 50%);
       border-width: 1px;
       border-radius: 24px;
       background-color: #000000;
       position: relative;
       overflow: hidden;
+      
       &::after {
         content: "";
         position: absolute;
@@ -722,25 +850,6 @@ body {
   background: linear-gradient(#e4e0ba, #f7d9aa);
 }
 
-.spotify-audio-player {
-  position: relative;
-  z-index: 0;
-  &::after {
-    content: "";
-    background-color: var(--spotify-bg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0, #121212 100%),
-      url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=");
-    height: 211px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: -1;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-  }
-}
 
 .webgl {
   position: absolute;
@@ -914,4 +1023,82 @@ body {
 %size {
   width: 100%;
   height: 100%;
+}
+
+
+// particles
+$radius:1000px;
+.particles-wrapper {
+   position:fixed;
+   top:50%;
+   left:40%;
+   margin-top:-$radius/2;
+   margin-left:-$radius/2;
+   height:$radius;
+   width:$radius;
+   z-index: -1;
+   filter:blur(0px);
+   @media screen and (max-width: 500px) {
+    $radius:500px;
+    top:25%;
+    left:50%;
+   }
+   .particles {
+      position:fixed;
+      top:50%;
+      transform-style: preserve-3d;
+      animation:spin 120s ease infinite;
+      .particle{
+         position:relative;
+         width:$radius;
+         &:after {
+            content:'';
+            position:absolute;
+            background-color:#ffffff9a;
+            height:2px;
+            width:2px;
+         }
+         @for $i from 1 through 100 {
+            &:nth-child(#{$i}) {
+               transform:rotateZ(random(360)+deg) rotateY(random(360)+deg) rotateX(random(360)+deg);
+               &:after {
+                  left:random(99)+49%;
+                  animation:slide random(10000)+5000ms -99999s ease-in-out infinite;
+               }  
+            }
+         }
+      }
+   }
+}
+@keyframes spin {
+   0% {
+      transform:rotateY(0deg) rotateX(0deg);
+   }
+   100% {
+      transform:rotateY(360deg) rotateX(360deg);
+   }
+}
+@keyframes slide {
+   0% {
+      left:45%;
+      opacity:0;
+   }
+   20% {
+      opacity:1;
+   }
+   89% {
+      left:0%;
+   }
+   90% {
+      left:100%;
+      height:1px;
+   }
+   95% {
+      opacity:1;
+   }
+   100% {
+      left:100%;
+      opacity:0;
+      height:3px;
+   }
 }

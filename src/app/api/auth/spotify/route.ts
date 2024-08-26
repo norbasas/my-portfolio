@@ -3,7 +3,7 @@ import crypto from 'crypto';
 
 export async function GET() {
   const clientId = process.env.SPOTIFY_CLIENT_ID || '';
-  const redirectUri = `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/spotify/callback`;
+  const redirectUri = `${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASE_URL : 'http://localhost:3000'}/api/auth/spotify/callback`;
   const scopes = [
     'user-read-currently-playing',
     'user-read-playback-state',

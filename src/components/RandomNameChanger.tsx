@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import addTooltip from './addTooltip';
-import { Fuggles } from "next/font/google";
+import { Montserrat_Subrayada } from "next/font/google";
 
-const fuggles = Fuggles({ weight: '400', subsets: ["latin"] });
+const MontserratSubrayada = Montserrat_Subrayada({ weight: '700', subsets: ["latin"] });
 
 const RandomTextChanger: React.FC = () => {
   const texts = ["Norberto Basas", "Nor Basas", "Norbz", "Pogi", "Cheesetouch"];
@@ -22,7 +22,7 @@ const RandomTextChanger: React.FC = () => {
   }, []);
 
   return (
-    <h1 className={`${fuggles.className} my-name`} ref={h1Ref} onClick={handleClick}>{currentText}</h1>
+    <h1 className={`${MontserratSubrayada.className} my-name`} ref={h1Ref} onClick={handleClick}>{currentText}</h1>
   );
 };
 

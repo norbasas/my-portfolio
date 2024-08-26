@@ -1,20 +1,23 @@
 import { NextResponse } from 'next/server';
-import axios from 'axios';
-import { cookies } from 'next/headers';
+import axios, { AxiosResponse }  from 'axios';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 const getAccessToken = async () => {
-  const refreshToken = cookies().get('spotify_refresh_token')?.value;
+
+  const existingToken = await prisma.token.findFirst();
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
-  if (!refreshToken) {
+  if (!existingToken?.refreshToken) {
     return null; // No refresh token available, likely not authenticated
   }
 
   try {
     const response = await axios.post('https://accounts.spotify.com/api/token', new URLSearchParams({
       grant_type: 'refresh_token',
-      refresh_token: refreshToken,
+      refresh_token: existingToken?.refreshToken,
     }), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -51,8 +54,8 @@ export async function GET() {
         isPlaying: true,
       });
     }
-
-    const recentlyPlayedResponse = await axios.get('https://api.spotify.com/v1/me/player/recently-played', {
+    
+    const recentlyPlayedResponse: AxiosResponse = await axios.get('https://api.spotify.com/v1/me/player/recently-played', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -67,6 +70,8 @@ export async function GET() {
         name: lastPlayed.name,
         artist: lastPlayed.artists.map((artist: any) => artist.name).join(', '),
         albumArt: lastPlayed.album.images[0].url,
+        link: lastPlayed.external_urls.spotify,
+        artistLink: lastPlayed.artists[0].external_urls.spotify,
         isPlaying: false,
       });
     }
