@@ -3,17 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 body {
@@ -253,7 +245,7 @@ body {
             opacity: 0.6;
             color: #ffffff;
           }
-          hr{
+          hr {
             margin-top: 1.2rem;
             margin-bottom: 1.2rem;
             opacity: 0.1;
@@ -819,7 +811,7 @@ body {
         width: 100%;
       }
       @media screen and (max-width: 550px) {
-        height: 350px;
+        height: 250px;
       }
     }
   }
@@ -1127,7 +1119,7 @@ $radius: 1000px;
 }
 
 .cta-group {
-  button {
+  .cta-btn {
     font-family: monospace;
     font-size: 13px;
     color: #fafafa;
@@ -1139,24 +1131,23 @@ $radius: 1000px;
     box-shadow: -2px 2px #fafafa;
     cursor: pointer;
     margin: 20px 0;
-  }
-
-  button:active {
-    box-shadow: none;
-    transform: translate(-2px, 2px);
+    &:active {
+      box-shadow: none;
+      transform: translate(-2px, 2px);
+    }
   }
 }
 
-.contact-modal{
+.contact-modal {
   background-color: #000000e6;
-    inset: 0;
-    position: fixed;
-    user-select: none;
-    z-index: 3;
+  inset: 0;
+  position: fixed;
+  user-select: none;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
-  &-bg{
+  &-bg {
     background-color: #00000000;
     inset: 0;
     position: fixed;
@@ -1164,7 +1155,7 @@ $radius: 1000px;
     z-index: 0;
     cursor: pointer;
   }
-  &-content{
+  &-content {
     border-bottom-width: 0.5px;
     border-color: rgba(255, 255, 255, 0.1);
     border-left-width: 0.5px;
@@ -1179,37 +1170,589 @@ $radius: 1000px;
     opacity: 1;
     padding: 20px;
     z-index: 1;
-    h2{
+    h2 {
       width: 100%;
       font-size: 20px;
       margin: 10px 0 35px;
       display: inline-flex;
       align-items: center;
-      button{
+      button {
         margin-left: auto;
       }
     }
-    ul{
+    ul {
       display: flex;
-    flex-direction: column;
-    gap: 12px;
-    li{
-      width: 100%;
-      a{
+      flex-direction: column;
+      gap: 12px;
+      li {
         width: 100%;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        .contact-icon{
-          background-color: rgba(255, 255, 255, 0.1);
+        .contact-link {
+          width: 100%;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border: 1px solid transparent;
           border-radius: 12px;
-          padding: 12px;
-        }
-        .contact-arrow{
-          margin-left: auto;
+          padding: 6px;
+          .sub-btn {
+            opacity: 0;
+            color: #ffffff91;
+            font-size: 11px;
+            display: block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+          }
+          .contact-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+          }
+          .contact-arrow {
+            margin-left: auto;
+          }
+          &:hover {
+            border-color: #ffffff22;
+            .sub-btn {
+              opacity: 1;
+            }
+          }
         }
       }
     }
+  }
+  &-email {
+    border-bottom-width: 0.5px;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-left-width: 0.5px;
+    border-right-width: 0.5px;
+    border-style: solid;
+    border-top-width: 0.5px;
+    backdrop-filter: blur(0px);
+    background-color: rgb(9, 9, 9);
+    max-width: 400px;
+    width: 100%;
+    border-radius: 16px;
+    opacity: 1;
+    padding: 20px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    h2 {
+      width: 100%;
+      font-size: 20px;
+      margin: 10px 0 20px;
+      display: inline-flex;
+      align-items: center;
+      button {
+        margin-left: auto;
+        svg {
+          rotate: -180deg;
+        }
+      }
     }
+    .email-status {
+      color: #ffffff4a;
+      font-size: 12px;
+    }
+    input,
+    textarea {
+      appearance: none;
+      display: inline-block;
+      width: 100%;
+      line-height: 1.4em;
+      outline: none;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-family: "figtree Regular", figtree, Inter, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-weight: 400;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgb(255, 255, 255);
+      box-shadow: transparent 0px 0px 0px 1px inset;
+    }
+    .email-submit {
+      appearance: none;
+      display: inline-block;
+      width: 100%;
+      line-height: 1.4em;
+      outline: none;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-family: "figtree Regular", figtree, Inter, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-weight: 600;
+      font-size: 13px;
+      background: rgb(255, 255, 255);
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+}
+
+.forest-hud {
+  --b: black;
+  --g: #bdbfbc;
+  --w: white;
+  --p: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  width: fit-content;
+  max-width: calc(100% - 40px);
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  border: 6px double black;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: white;
+  min-height: 85px;
+  p {
+    letter-spacing: 1px;
+    font-size: 8px;
+    line-height: 1.8;
+    color: #000;
+    flex: 1;
+  }
+  .hud-buttons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    margin-left: auto;
+    height: 100%;
+    flex-wrap: wrap;
+    max-width: 105px;
+    .hud-water {
+      font-size: 9px;
+      border: 2px solid black;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      letter-spacing: -1px;
+      padding: 4px 6px;
+    }
+    .hud-control {
+      font-size: 11px;
+      border: 2px solid black;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1/1;
+      text-align: center;
+      letter-spacing: -1px;
+    }
+  }
+  .status {
+    width: 180px;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    .poke {
+      &-name {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: right;
+      }
+
+      &-level {
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: 0px;
+      }
+
+      &-bar {
+        width: 100%;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: 5px;
+        border-bottom: 3px solid #000;
+        border-right: 4px solid #000;
+        border-bottom-left-radius: 6px;
+        padding-left: 10px;
+        position: relative;
+        .xp{
+          font-size: 6px;
+          padding: 3px 6px;
+          border-radius: 4px;
+          background-color: #ffffff;
+          color: #000;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 106%;
+          height: 11px;
+          z-index: 2;
+          text-align: center;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+        }
+        &:hover .xp{
+          opacity: 1;
+        }
+
+        h5 {
+          font-size: 9px;
+          margin: 3px;
+        }
+      }
+    }
+    .life-bar {
+      margin-right: 10px;
+      position: relative;
+      width: 120px;
+      height: 9px;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+     span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: #00aeff;
+    }
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -3px;
+        background-color: #000;
+        width: 3px;
+        height: 5px;
+      }
+      &::after {
+        left: inherit;
+        right: -3px;
+      }
+    }
+  }
+  .pkmn {
+    --container-size: calc(var(--p) * 16);
+    width: var(--container-size);
+    height: var(--container-size);
+    margin: calc(var(--p) * 2);
+  }
+  .pkmn::after {
+    content: "";
+    outline: none;
+    position: absolute;
+    width: var(--p);
+    height: var(--p);
+    transform: var(--first-pos);
+    background: var(--first-pixel-color-1);
+    box-shadow: var(--bs-1);
+    animation: spriteAnim 0.5s steps(1) infinite;
+  }
+  @keyframes spriteAnim {
+    0% {
+      box-shadow: var(--bs-1);
+      background: var(--first-pixel-color-1);
+    }
+    50% {
+      box-shadow: var(--bs-2);
+      background: var(--first-pixel-color-2);
+    }
+  }
+  .pkmn__pikachu::after {
+    --first-pixel-color-1: transparent;
+    --first-pixel-color-2: var(--b);
+    --first-pos: translate(calc(var(--p) * 1), calc(var(--p) * 1));
+    --bs-1: 0 calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 12) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 13) calc(var(--p) * 1) var(--b),
+      0 calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 2) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 2) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 13) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 4) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 4) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 8) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 8) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 13) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 13) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 13) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 13) var(--b);
+    --bs-2: calc(var(--p) * 1) 0 var(--b), calc(var(--p) * 2) 0 var(--b),
+      calc(var(--p) * 11) 0 var(--b), calc(var(--p) * 12) 0 var(--b),
+      calc(var(--p) * 13) 0 var(--b),
+      calc(var(--p) * 0) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 1) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 1) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 13) calc(var(--p) * 1) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 2) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 2) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 2) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 2) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 2) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 3) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 3) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 4) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 4) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 4) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 4) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 4) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 5) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 5) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 6) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 6) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 7) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 7) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 8) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 8) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 8) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 8) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 8) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 9) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 9) var(--b),
+      calc(var(--p) * 1) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 3) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 10) var(--w),
+      calc(var(--p) * 12) calc(var(--p) * 10) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 5) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 6) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 7) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 8) calc(var(--p) * 11) var(--w),
+      calc(var(--p) * 9) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 11) calc(var(--p) * 11) var(--b),
+      calc(var(--p) * 2) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 4) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 5) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 6) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 7) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 8) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 10) calc(var(--p) * 12) var(--w),
+      calc(var(--p) * 11) calc(var(--p) * 12) var(--b),
+      calc(var(--p) * 3) calc(var(--p) * 13) var(--b),
+      calc(var(--p) * 4) calc(var(--p) * 13) var(--b),
+      calc(var(--p) * 9) calc(var(--p) * 13) var(--b),
+      calc(var(--p) * 10) calc(var(--p) * 13) var(--b);
   }
 }

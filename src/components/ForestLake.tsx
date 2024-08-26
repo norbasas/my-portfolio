@@ -17,12 +17,13 @@ type ForestLakeProps = {
 
 const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const parentDivRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!canvasRef.current && level == 0) return;
+    if (!canvasRef.current || !parentDivRef.current && level == 0) return;
 
-    // Initialize scene, camera, renderer
     const canvas = canvasRef.current;
+    const parentDiv = parentDivRef.current;
 
     class App {
       winWidth: number;
@@ -46,8 +47,8 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
 
       constructor(level: number, onLoadComplete: () => void) {
         this.level = level;
-        this.winWidth = canvas?.clientWidth || 0;
-        this.winHeight = canvas?.clientHeight || 0;
+        this.winWidth = parentDiv?.clientWidth || 0;
+        this.winHeight = parentDiv?.clientHeight || 0;
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.clock = new THREE.Clock();
@@ -61,17 +62,12 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
         this.loadingBar = document.getElementById("loading-progress");
         this.loadingText = document.getElementById("loading-text");
 
-        // Event listeners for loading manager
-        // this.manager.onStart = (url, itemsLoaded, itemsTotal) => {
-        //   console.log(
-        //     `Started loading: ${url}. Loaded ${itemsLoaded} of ${itemsTotal} files.`
-        //   );
-        // };
         this.manager.onLoad = () => {
           console.log("All resources loaded.");
           this.hideLoadingScreen();
           this.initApp();
         };
+
         this.manager.onProgress = (url, itemsLoaded, itemsTotal) => {
           const percentage = Math.round((itemsLoaded / itemsTotal) * 100);
 
@@ -82,9 +78,6 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
             this.loadingText.textContent = `Loading: ${percentage}% (${itemsLoaded} of ${itemsTotal} files loaded).`;
           }
         };
-        // this.manager.onError = (url) => {
-        //   console.error(`Error loading: ${url}`);
-        // };
 
         this.loadAssets();
       }
@@ -92,7 +85,6 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
       async loadAssets() {
         ASSETS.forestScene = await this.loadModel(FILES.forestFile);
         ASSETS.noiseMap = await this.loadTexture(FILES.noiseFile);
-        // this.initApp();
       }
 
       loadModel(file: string) {
@@ -132,12 +124,11 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
         const loadingWrapper = document.getElementById("loading-wrapper");
         if (loadingWrapper) {
           loadingWrapper.classList.add("hidden");
-          // Optionally, you can remove the element from the DOM after the transition
           setTimeout(() => {
             if (loadingWrapper) {
               loadingWrapper.remove();
             }
-          }, 500); // Match the duration of the transition
+          }, 500);
         }
       }
 
@@ -145,8 +136,8 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
         this.createWorlds();
         this.createRenderer();
         this.createControls();
+        this.onWindowResize(); // Initial resize
         this.createListeners();
-        this.onWindowResize();
         this.loop();
       }
 
@@ -185,11 +176,8 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
 
       createListeners() {
         window.addEventListener("resize", this.onWindowResize.bind(this));
-        document.addEventListener(
-          "touchmove",
-          this.onTouchMove.bind(this),
-          false
-        );
+        const observer = new ResizeObserver(this.onWindowResize.bind(this));
+        observer.observe(parentDiv!); // Observe the parent div for resizing
       }
 
       loop() {
@@ -215,8 +203,13 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
       }
 
       onWindowResize() {
-        this.winWidth = canvas?.clientWidth || 0;
-        this.winHeight = canvas?.clientHeight || 0;
+        // Update the canvas size
+        if (parentDiv) {
+          this.winWidth = parentDiv.clientWidth;
+          this.winHeight = parentDiv.clientHeight;
+        }
+
+        // Resize renderer and update camera aspect ratio
         this.renderer.setSize(this.winWidth, this.winHeight);
         this.currentWorld.camera.aspect = this.winWidth / this.winHeight;
         this.currentWorld.camera.updateProjectionMatrix();
@@ -255,7 +248,7 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
         this.level = level;
         this.camera = new THREE.PerspectiveCamera(
           60,
-          canvas?.clientWidth ?? 0 / (canvas?.clientHeight ?? 0),
+          parentDiv?.clientWidth ?? 0 / (parentDiv?.clientHeight ?? 0),
           0.1,
           150
         );
@@ -274,7 +267,7 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
 
         this.scene.traverse((child) => {
           if ((child as THREE.Mesh).isMesh && child.name.includes("tree")) {
-            const treeId = child.name.split("_")[1]; // Assuming the ID is after an underscore, e.g., "tree_01_wood"
+            const treeId = child.name.split("_")[1];
             if (!treeGroups[treeId]) {
               treeGroups[treeId] = [];
             }
@@ -291,8 +284,8 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
           percentage = this.level;
         }
 
-        if(this.level > 100) {
-            percentage = 100;
+        if (this.level > 100) {
+          percentage = 100;
         }
         const visibleCount = Math.floor(
           (percentage / 100) * treeGroupsArray.length
@@ -318,7 +311,7 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
   }, [level]);
 
   return (
-    <>
+    <div ref={parentDivRef} style={{ width: "100%", height: "100%" }}>
       <div id="loading-wrapper">
         <div id="loading-bar">
           <div id="loading-progress"></div>
@@ -330,7 +323,7 @@ const ForestLake: React.FC<ForestLakeProps> = ({ level = 0 }) => {
         className="webgl"
         style={{ width: "100%", height: "100%" }}
       ></canvas>
-    </>
+    </div>
   );
 };
 

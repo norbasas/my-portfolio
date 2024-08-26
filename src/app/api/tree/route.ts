@@ -3,17 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// Function to calculate XP
-const calculateXP = (views: number, water: number): number => {
-  // Example calculation logic
-  return views * 10 + water * 5;
-};
 
-// Function to calculate level based on XP
 const calculateLevel = (views: number, water: number) => {
-  let xp = views * 10 + water * 5;
+  let xp = views * 10 + water * 30;
   let level = 0;
-  let xpRequired = 100;
+  let xpRequired = 10;
 
   while (xp >= xpRequired) {
     level++;

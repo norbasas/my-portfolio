@@ -74,6 +74,7 @@ interface SliderProps {
           transition: opacity 0.5s ease-in-out;
           opacity: 0;
           position: relative;
+          display: flex;
         }
         .slide::after {
             content: '';

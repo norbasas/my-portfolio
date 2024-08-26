@@ -1,5 +1,6 @@
 function addTooltip(element: HTMLElement, tooltipText: string) {
     const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip';
     tooltip.textContent = tooltipText;
     tooltip.style.position = 'absolute';
     tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';

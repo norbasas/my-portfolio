@@ -26,6 +26,7 @@
     "http": "^0.0.1-security",
     "mongodb": "^6.8.0",
     "next": "14.2.5",
+    "nodemailer": "^6.9.14",
     "nookies": "^2.5.2",
     "react": "^18",
     "react-dom": "^18",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@types/cookie": "^0.6.0",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/three": "^0.167.1",
