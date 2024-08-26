@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 
 const calculateLevel = (views: number, water: number) => {
-  let xp = views * 10 + water * 30;
+  let xp = views * 20 + water * 40;
   let level = 0;
   let xpRequired = 10;
 
