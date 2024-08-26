@@ -8,8 +8,7 @@
     "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "prisma migrate deploy",
-    "postbuild": "next-sitemap"
+    "migrate": "prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",
@@ -27,7 +26,6 @@
     "http": "^0.0.1-security",
     "mongodb": "^6.8.0",
     "next": "14.2.5",
-    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.14",
     "nookies": "^2.5.2",
     "react": "^18",

@@ -1,0 +1,17 @@
+# *
+User-agent: *
+Disallow: /
+
+# *
+User-agent: *
+Allow: /$
+
+# *
+User-agent: *
+Allow: /sitemap.xml
+
+# Host
+Host: https://norbasas.vercel.app
+
+# Sitemaps
+Sitemap: https://norbasas.vercel.app/sitemap.xml
