@@ -33,22 +33,12 @@ const TreeComponent: React.FC = () => {
 
   const incrementViews = async () => {
     await axios.post("/api/tree/increment-views");
-    setTree((prevTree) => ({
-      ...prevTree,
-      xp: prevTree.xp + 2, // 1 view = 2 XP
-      views: prevTree.views + 1,
-    }));
     fetchTree();
   };
 
   const waterTree = async () => {
     setRainIsLoading(true);
     await axios.post("/api/tree/water");
-    setTree((prevTree) => ({
-      ...prevTree,
-      xp: prevTree.xp + 5, // 1 water = 5 XP
-      water: prevTree.water + 1, // Increment waterCount
-    }));
     fetchTree();
     setRain(true);
     setRainIsLoading(false);
@@ -103,7 +93,7 @@ const TreeComponent: React.FC = () => {
           <div className="poke-bar">
             <h5>EXP:</h5>
             <div className="life-bar">
-              <span className="xp">{tree.xp} / {tree.xpRequired}</span>
+              <span className="xp">{tree.xp?.toFixed(0)} / {tree.xpRequired?.toFixed(0)}</span>
               <span
                 style={{ width: `${xpPercent}%`, background: "#00aeff" }}
               ></span>
