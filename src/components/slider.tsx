@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 interface Slide {
@@ -36,7 +37,7 @@ interface SliderProps {
             key={index}
             className={`slide ${index === currentIndex ? 'active' : ''}`}
           >
-            <img src={slide.image} alt={slide.title} />
+            <Image width={760} height={315} src={slide.image} alt={slide.title} />
             <div className="slide-content">
               <h3>{slide.title}</h3>
               <p>{slide.description}</p>

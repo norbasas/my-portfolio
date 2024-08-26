@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -41,7 +42,7 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
   };
 
   useEffect(() => {
-    const img = new Image();
+    const img = document.createElement("img");
     img.src = albumArt;
     img.crossOrigin = "Anonymous"; // Handle CORS issues if the image is from another domain
 
@@ -120,10 +121,12 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
+          <Image
+            src="/images/spotify-logo.png"
             alt="Spotify"
             style={{ height: "14px", verticalAlign: "middle" }}
+            width={50}
+            height={15}
           />
         </a>
       </span>
@@ -133,11 +136,13 @@ const SpotifyAudioPlayer: React.FC<SpotifyAudioPlayerProps> = ({
         Your browser does not support the audio element.
       </audio>
 
-      <img
+      <Image
         className="song-cover mt-auto"
         ref={imgRef}
         src={albumArt}
         alt={name}
+        width={300}
+        height={300}
       />
       <div className="song-info flex align-middle gap-1 w-full">
         <button onClick={handlePlayPause}>

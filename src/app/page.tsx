@@ -6,6 +6,7 @@ import SpotifyPlayer from "@/components/SpotifyPlayer";
 import TreeComponent from "@/components/Tree";
 
 import { getMarkdownContent } from "@/lib/markdown";
+import Image from "next/image";
 
 const createImageArray = (count: number) => {
   const images = [];
@@ -98,7 +99,7 @@ const HomePage = async () => {
               <li>2014-2018</li>
             </ul>
           </div>
-          <img src="/images/education.jpg" alt="Under Grad Days" />
+          <Image width={363} height={347} src="/images/education.jpg" alt="Under Grad Days" />
         </div>
         <div className="bottom-two">
           <div className="bottom-two-one">

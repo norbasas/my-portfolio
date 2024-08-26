@@ -698,6 +698,9 @@ body {
             display: flex;
             font-size: 9px;
             gap: 5px;
+            img{
+              object-fit: contain;
+            }
           }
         }
         

@@ -7,8 +7,7 @@ const prisma = new PrismaClient();
 export async function GET() {
   const spotifyToken = await prisma.token.findFirst();
 
-
-  if (spotifyToken?.expiresAt < new Date())  {
+  if (!spotifyToken || spotifyToken.expiresAt < new Date())  {
     return NextResponse.json({ error: 'No refresh token found' }, { status: 400 });
   }
 
@@ -18,8 +17,8 @@ export async function GET() {
   try {
     const response = await axios.post('https://accounts.spotify.com/api/token', new URLSearchParams({
       grant_type: 'refresh_token',
-      refresh_token: spotifyToken.refreshToken,
-    }), {
+      refresh_token: spotifyToken.refreshToken || '',
+    }).toString(), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
