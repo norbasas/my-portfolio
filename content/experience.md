@@ -1,28 +1,17 @@
 ## Experience
 
 ### Front-End Web Developer
-**StunnerYPP Corporation | 03/2022 - Present**
-- Spearheaded development of error handlers for NextJS applications, reducing uncaught errors by 90%
-- Converted website from ReactJS to NextJS framework, resulting in 20% improvement in page load times
-- Developed and maintained multiple client websites using ReactJS, NextJS, and Vanilla JS plugins
-- Implemented JSON-LD structured data for enhanced SEO performance
-- Utilized Redis for efficient data caching and improved application performance
-- Integrated Next-Auth for seamless user authentication and authorization
-- Created custom NextJS site template for rapid client website development, reducing turnaround time by 30%
-- Designed and implemented majority of UI components for company's monorepo NPM packages
-- Utilized PM2 process manager to enhance application performance and reliability
-- Developed site for VR streaming, enabling immersive user experiences
-- Redesigned website to enhance visual appeal and user-friendliness, contributing to a 15% increase in user engagement
-- Optimized websites for search engines, improving organic search rankings and click-through rates
+##### *StunnerYPP Corporation | 03/2022 - Present*
+
+I led the development of error handlers for Next.js applications, reducing uncaught errors by 90%, and converted a website from React.js to Next.js, improving page load times by 20%. My work involved developing and maintaining multiple client websites using React.js, Next.js, and Vanilla JS plugins, implementing JSON-LD structured data for enhanced SEO performance, and utilizing Redis for efficient data caching. I also integrated Next-Auth for seamless user authentication and created a custom Next.js site template, cutting development time by 30%.
+
+In addition, I designed and implemented the majority of UI components for the company's monorepo NPM packages, used PM2 to enhance application performance and reliability, developed a site for VR streaming to enable immersive user experiences, and redesigned a website to increase visual appeal and user-friendliness, resulting in a 15% increase in user engagement. My efforts in optimizing websites for search engines also improved organic search rankings and click-through rates.
+
+---
 
 ### Web Developer
-**JRomeDRosa and Co. Inc. (Gofer) | 07/2019 - 03/2022**
-- Translated static designs into interactive web elements using GatsbyJS, optimizing visual and coding components to improve loading speed and performance by up to 20%
-- Developed and updated web applications using Laravel and Livewire frameworks
-- Created learning management tool for delivery riders to master standard operating procedures and track progress
-- Optimized SEO, elevating website to top rankings in local search results and increasing app downloads
-- Introduced Git version control to streamline file sharing and collaboration on shared hosting platform
-- Additional Experience
-- Created layouts, graphics, and visual designs for digital advertisements and print media
-- Monitored and reported on marketing expenses and performance metrics
-- Provided customer service support and performed basic network administration tasks as needed
+##### *JRomeDRosa and Co. Inc. (Gofer) | 07/2019 - 03/2022*
+
+I translated static designs into interactive web elements using GatsbyJS, optimizing visual and coding components to enhance loading speed and performance by up to 20%. I also developed and updated web applications using Laravel and Livewire frameworks, and created a learning management tool for delivery riders to master standard operating procedures and track their progress. My work in optimizing SEO led to top rankings in local search results and increased app downloads. Additionally, I introduced Git version control to streamline file sharing and collaboration on a shared hosting platform.
+
+My experience also includes creating layouts, graphics, and visual designs for digital advertisements and print media, monitoring and reporting on marketing expenses and performance metrics, and providing customer service support while performing basic network administration tasks as needed.
