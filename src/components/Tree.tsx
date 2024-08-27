@@ -78,14 +78,17 @@ const TreeComponent: React.FC = () => {
   return (
     <div className="world-container">
       <Rain show={rain} />
-      {/* <div className="forest-info">
-        <p>
-          XP: {tree.xp} / {tree.xpRequired}{" "}
-        </p>
-        <p>Water Received: {tree.water}</p>
-        <p>Island Level: {tree.level}</p>
-        <button onClick={waterTree}>Water the Tree</button>
-      </div> */}
+      <div className="forest-info">
+        <div className="spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        Drag to move around
+      </div>
       <div className={`forest-hud ${font.className}`}>
         <div className="status">
           <div className="poke-name">My Island :L{tree.level}</div>
@@ -93,7 +96,9 @@ const TreeComponent: React.FC = () => {
           <div className="poke-bar">
             <h5>EXP:</h5>
             <div className="life-bar">
-              <span className="xp">{tree.xp?.toFixed(0)} / {tree.xpRequired?.toFixed(0)}</span>
+              <span className="xp">
+                {tree.xp?.toFixed(0)} / {tree.xpRequired?.toFixed(0)}
+              </span>
               <span
                 style={{ width: `${xpPercent}%`, background: "#00aeff" }}
               ></span>
