@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import SpotifyAudioPlayer from "./SpotifyAudioPlayer";
+import { fetchSpotifyData } from "@/lib/fetchSpotifyData";
 
 interface SpotifySong {
-  preview_url: string;
+  preview_url?: string;
   name: string;
   artist: string;
   albumArt: string;
@@ -20,19 +21,16 @@ export default function SpotifyPlayer({ className }: { className: string }) {
   useEffect(() => {
     async function fetchSong() {
       try {
-        const response = await fetch("/api/my-music");
-        if (response.ok) {
-          const data = await response.json();
-          setSong(data);
-        } else {
-          setError(true);
-          console.error("Failed to fetch song data");
-        }
+        const data = await fetchSpotifyData();
+        console.log(data, '---------------');
+          setSong(data as SpotifySong);
+        
       } catch (error) {
         setError(true);
         console.error("Error fetching song:", error);
       }
     }
+
 
     fetchSong();
   }, []);

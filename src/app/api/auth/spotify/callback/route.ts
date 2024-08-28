@@ -54,10 +54,6 @@ export async function GET(request: Request) {
       });
     }
 
-    let token = await prisma.token.findFirst();
-    console.log(token, '---------------');
-
-
     return NextResponse.json({ access_token, refresh_token });
   } catch (error) {
     console.error('Error exchanging code:', error);

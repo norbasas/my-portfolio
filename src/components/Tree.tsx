@@ -4,6 +4,7 @@ import axios from "axios";
 import ForestLake from "./ForestLake";
 import Rain from "./Rain";
 import { Press_Start_2P } from "next/font/google";
+import { fetchTreeData } from "@/lib/fetchTreeData";
 
 const font = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
@@ -27,9 +28,9 @@ const TreeComponent: React.FC = () => {
   const [rainIsLoading, setRainIsLoading] = useState(false);
 
   const fetchTree = async () => {
-    const response = await axios.get("/api/tree");
-    if(response){
-      setTree(response.data);
+    const treeData = await fetchTreeData(); 
+    if(treeData){
+      setTree(treeData);
     }
   };
 
