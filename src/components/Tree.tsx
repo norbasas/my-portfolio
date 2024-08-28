@@ -38,7 +38,20 @@ const TreeComponent: React.FC = () => {
     await fetchTree();
   };
 
+  const event = ({ action, category, label, value }: any) => {
+    (window as any).gtag('event', action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    });
+  };
   const waterTree = async () => {
+      event({
+        action: 'give_water',
+        category: 'my_island',
+        label: 'Watered the tree',
+        value: '1',
+      });
     setRainIsLoading(true);
     await axios.post("/api/tree/water");
     await fetchTree();
