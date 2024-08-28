@@ -28,18 +28,20 @@ const TreeComponent: React.FC = () => {
 
   const fetchTree = async () => {
     const response = await axios.get("/api/tree");
-    setTree(response.data);
+    if(response){
+      setTree(response.data);
+    }
   };
 
   const incrementViews = async () => {
     await axios.post("/api/tree/increment-views");
-    fetchTree();
+    await fetchTree();
   };
 
   const waterTree = async () => {
     setRainIsLoading(true);
     await axios.post("/api/tree/water");
-    fetchTree();
+    await fetchTree();
     setRain(true);
     setRainIsLoading(false);
     setTimeout(() => {
