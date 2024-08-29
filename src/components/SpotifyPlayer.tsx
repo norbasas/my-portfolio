@@ -22,7 +22,6 @@ export default function SpotifyPlayer({ className }: { className: string }) {
     async function fetchSong() {
       try {
         const data = await fetchSpotifyData();
-        console.log(data, '---------------');
           setSong(data as SpotifySong);
         
       } catch (error) {

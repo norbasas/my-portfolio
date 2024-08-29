@@ -7,7 +7,9 @@ import SpotifyPlayer from "@/components/SpotifyPlayer";
 import TreeComponent from "@/components/Tree";
 
 import { getMarkdownContent } from "@/lib/markdown";
+import Head from "next/head";
 import Image from "next/image";
+import Script from "next/script";
 
 const createImageArray = (count: number) => {
   const images = [];
@@ -29,8 +31,45 @@ const HomePage = async () => {
     },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Norberto Basas",
+    "jobTitle": "Front-End Developer",
+    "url": "https://norbasas.vercel.app",
+    "image": "https://norbasas.vercel.app/images/6.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/norbasas",
+      "https://github.com/norbasas",
+      "https://twitter.com/norbzbasas"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pasig City",
+      "addressRegion": "Metro Manila",
+      "addressCountry": "Philippines"
+    },
+    "birthDate": "1997-02-03",
+    "description": "A 27-year-old front-end developer specializing in JavaScript, React.js, TypeScript, and Laravel. Based in Pasig, Metro Manila, Philippines.",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Your University Name"
+    },
+    "knowsAbout": ["JavaScript", "React.js", "TypeScript", "NextJs", "Laravel"],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "StunnerYPP Corporation",
+      "sameAs": "https://stunnerypp.com"
+    }
+  };
+
   return (
     <>
+    <Script
+      id="jsonLdScript"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
       <div className="main-container">
         <div className="top-level">
           <div className="top-one">
