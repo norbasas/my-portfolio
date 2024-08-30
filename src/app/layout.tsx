@@ -21,10 +21,9 @@ export const metadata: Metadata = {
     icons: {
       apple: '/icons/apple-touch-icon.png',
       icon: [
-        { rel: 'icon', url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        { rel: 'icon', url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { rel: 'icon', url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
       ],
-      shortcut: '/icons/favicon.ico',
+      shortcut: '/favicon.png',
     },
     manifest: '/icons/site.webmanifest',
     authors: [{ name: 'Norberto Basas' }],
