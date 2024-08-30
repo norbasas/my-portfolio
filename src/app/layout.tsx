@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Analytics } from '@vercel/analytics/react';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,7 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <GoogleAnalytics />
-      <body className={`dark ${inter.className}`}>{children}</body>
+      <body className={`dark ${inter.className}`}>
+        {children}
+        <Analytics/>
+      </body>
     </html>
   );
 }
