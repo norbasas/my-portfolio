@@ -62,7 +62,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+      <meta name="facebook-domain-verification" content="zr0uhgenjc1pn3a28pqcd26hww83i2" />
       <GoogleAnalytics />
+      </head>
       <body className={`dark ${inter.className}`}>
         {children}
         <Analytics/>
