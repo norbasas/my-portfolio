@@ -35,7 +35,7 @@ const HomePage = async () => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Norberto Basas",
-    "jobTitle": "Front-End Developer",
+    "jobTitle": "Web Developer",
     "url": "https://norbasas.vercel.app",
     "image": "https://norbasas.vercel.app/images/6.jpg",
     "sameAs": [
@@ -50,10 +50,10 @@ const HomePage = async () => {
       "addressCountry": "Philippines"
     },
     "birthDate": "1997-02-03",
-    "description": "A 27-year-old front-end developer specializing in JavaScript, React.js, TypeScript, and Laravel. Based in Pasig, Metro Manila, Philippines.",
+    "description": "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
     "alumniOf": {
       "@type": "EducationalOrganization",
-      "name": "Your University Name"
+      "name": "Pangasinan State University - Alaminos City Campus",
     },
     "knowsAbout": ["JavaScript", "React.js", "TypeScript", "NextJs", "Laravel"],
     "worksFor": {

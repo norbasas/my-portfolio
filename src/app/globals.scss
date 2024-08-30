@@ -154,7 +154,7 @@ body {
         background-repeat: repeat;
         animation: noise 1.5s steps(2) 0.01s infinite;
         animation-play-state: running;
-        opacity: 0.03;
+        opacity: 0.025;
         z-index: 1;
       }
       &:hover {
@@ -278,7 +278,7 @@ body {
           background-repeat: repeat;
           animation: noise 1.5s steps(2) 0.01s infinite;
           animation-play-state: running;
-          opacity: 0.03;
+          opacity: 0.025;
           pointer-events: none;
         }
         .experience {
@@ -354,7 +354,7 @@ body {
         background-repeat: repeat;
         animation: noise 1.5s steps(2) 0.01s infinite;
         animation-play-state: running;
-        opacity: 0.03;
+        opacity: 0.025;
         z-index: 1;
         pointer-events: none;
       }
@@ -461,7 +461,7 @@ body {
         background-repeat: repeat;
         animation: noise 1.5s steps(2) 0.01s infinite;
         animation-play-state: running;
-        opacity: 0.03;
+        opacity: 0.025;
         z-index: 1;
       }
       &::before {
@@ -580,7 +580,7 @@ body {
           background-repeat: repeat;
           animation: noise 1.5s steps(2) 0.01s infinite;
           animation-play-state: running;
-          opacity: 0.03;
+          opacity: 0.025;
           z-index: 1;
           pointer-events: none;
         }
@@ -726,7 +726,7 @@ body {
           background-repeat: repeat;
           animation: noise 1.5s steps(2) 0.01s infinite;
           animation-play-state: running;
-          opacity: 0.03;
+          opacity: 0.025;
           pointer-events: none;
         }
         .spotify-audio-player {
@@ -789,7 +789,7 @@ body {
         background-repeat: repeat;
         animation: noise 1.5s steps(2) 0.01s infinite;
         animation-play-state: running;
-        opacity: 0.03;
+        opacity: 0.025;
         pointer-events: none;
       }
       .slider-container {

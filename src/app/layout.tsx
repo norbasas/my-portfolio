@@ -15,41 +15,40 @@ export const metadata: Metadata = {
       'en-US': '/en-US',
     },
   },
-  title: "Norberto Basas | Front-End Developer | JavaScript, React.js, TypeScript",
+  title: "Norberto Basas ❖ Web Developer",
   description:
-    "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, and TypeScript. Based in Pasig, Metro Manila, Philippines.",
+    "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
     icons: {
       apple: '/icons/apple-touch-icon.png',
       icon: [
-        { rel: 'icon', url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+        { rel: 'icon', url: '/favicon.svg', type: 'image/svg+xml' },
       ],
-      shortcut: '/favicon.png',
+      shortcut: '/favicon.svg',
     },
     manifest: '/icons/site.webmanifest',
     authors: [{ name: 'Norberto Basas' }],
-    keywords: ['Norberto Basas', 'Front-End Developer', 'JavaScript', 'React.js', 'TypeScript'],
+    keywords: ['Norberto Basas', 'Nor Basas', 'Norbz', 'Front-end Developer', 'Web Developer', 'JavaScript', 'React.js', 'TypeScript'],
     robots: 'index, follow',
     openGraph: {
       type: 'website',
       locale: 'en_US',
       url: 'https://norbasas.vercel.app',
-      siteName: 'Norberto Basas',
-      title: 'Norberto Basas | Front-End Developer | JavaScript, React.js, TypeScript',
+      title: 'Norberto Basas ❖ Web Developer',
       description:
-        'Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, and TypeScript. Based in Pasig, Metro Manila, Philippines.',
+        'Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.',
       images: [
         {
           url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'Norberto Basas | Front-End Developer | JavaScript, React.js, TypeScript',
+          alt: 'Norberto Basas ❖ Web Developer',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: "Norberto Basas | Front-End Developer | JavaScript, React.js, TypeScript",
-      description: "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, and TypeScript. Based in Pasig, Metro Manila, Philippines.",
+      title: "Norberto Basas ❖ Web Developer",
+      description: "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
       images: ['/images/og-image.jpg'],
     },
 };
