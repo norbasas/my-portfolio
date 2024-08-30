@@ -8,6 +8,13 @@ import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://norbasas.vercel.app'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
   title: "Norberto Basas | Front-End Developer | JavaScript, React.js, TypeScript",
   description:
     "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, and TypeScript. Based in Pasig, Metro Manila, Philippines.",
