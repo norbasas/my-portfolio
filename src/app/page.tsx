@@ -35,7 +35,10 @@ const HomePage = async () => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Norberto Basas",
+    "alternateName": "Nor Basas",
+    "additionalName": "Norbz",
     "jobTitle": "Web Developer",
+    "email": "norbzqwerty@gmail.com",
     "url": "https://norbasas.vercel.app",
     "image": "https://norbasas.vercel.app/images/6.jpg",
     "sameAs": [
@@ -46,14 +49,26 @@ const HomePage = async () => {
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pasig City",
-      "addressRegion": "Metro Manila",
+      "addressRegion": "NCR",
       "addressCountry": "Philippines"
     },
+    "birthPlace" : {
+      "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+            "addressLocality": "Las Piñas City",
+            "addressRegion": "NCR",
+            "addressCountry": "Philippines"
+      },
+    },
     "birthDate": "1997-02-03",
+    "gender": "male",
+    "nationality": "Filipino",
     "description": "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
     "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Pangasinan State University - Alaminos City Campus",
+      "@type": "CollegeOrUniversity",
+      "name": "Pangasinan State University Alaminos Campus",
+      "sameAs": "https://alaminos.psu.edu.ph/"
     },
     "knowsAbout": ["JavaScript", "React.js", "TypeScript", "NextJs", "Laravel"],
     "worksFor": {
