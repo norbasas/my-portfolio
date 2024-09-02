@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   title: "Norberto Basas ❖ Web Developer",
   description:
-    "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
+    "Frontend web developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
     icons: {
       apple: '/icons/apple-touch-icon.png',
       icon: [
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     manifest: '/icons/site.webmanifest',
     authors: [{ name: 'Norberto Basas' }],
     keywords: ['Norberto Basas', 'Nor Basas', 'Norbz', 'Front-end Developer', 'Web Developer', 'JavaScript', 'React.js', 'TypeScript'],
-    robots: 'index, follow',
+    robots: 'follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large',
     openGraph: {
       type: 'website',
       locale: 'en_US',
       url: 'https://norbasas.vercel.app',
       title: 'Norberto Basas ❖ Web Developer',
       description:
-        'Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.',
+        'Frontend web developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.',
       images: [
         {
           url: '/images/og-image.jpg',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     twitter: {
       card: 'summary_large_image',
       title: "Norberto Basas ❖ Web Developer",
-      description: "Frontend developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
+      description: "Frontend web developer with a passion for creating responsive and visually stunning web applications. Specializing in JavaScript, React.js, Next.js and TypeScript. Based in Pasig, Metro Manila, Philippines.",
       images: ['/images/og-image.jpg'],
     },
 };
