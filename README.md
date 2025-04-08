@@ -11,7 +11,6 @@ Frontend developer and designer with a passion for creating responsive and visua
 - NextJs
 - SCSS
 - ExpressJs
-- Laravel
 
 ## Experience
 
