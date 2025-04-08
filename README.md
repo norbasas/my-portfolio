@@ -10,6 +10,7 @@ Frontend developer and designer with a passion for creating responsive and visua
 - ReactJs
 - NextJs
 - SCSS
+- ExpressJs
 
 ## Experience
 
